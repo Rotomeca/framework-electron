@@ -1,0 +1,65 @@
+:root {
+  /*--namespace-type*/
+  /*Basic-types*/
+  --rotomeca-primary: #d46f4d;
+  --rotomeca-secondary: #08c5d1;
+  --rotomeca-primary-tone-1: #430c05;
+  --rotomeca-primary-tone-2: #ffbf66;
+  --rotomeca-secondary-tone-1: #00353f;
+  --rotomeca-secondary-tone-2: #bed3c3;
+  --rotomeca-success: #3bdd3b;
+  --rotomeca-error: red;
+  --rotomeca-warning: orange;
+  --rotomeca-info: #9bc8e2;
+  --rotomeca-light: white;
+  --rotomeca-dark: black;
+  --rotomeca-border-radius-1: 10px;
+  --rotomeca-border-radius-2: 5px;
+  --rotomeca-border-radius-3: 100px;
+  /*Buttons*/
+  --rotomeca-button-primary-background-color: var(--rotomeca-primary);
+  --rotomeca-button-primary-color: var(--rotomeca-light);
+  --rotomeca-button-primary-border: solid thin var(--rotomeca-primary);
+  --rotomeca-button-primary-hover-background-color: var(--rotomeca-primary-tone-1);
+  --rotomeca-button-primary-hover-color: var(--rotomeca-light);
+  --rotomeca-button-primary-hover-border: solid thin var(--rotomeca-primary-tone-1);
+  --rotomeca-button-primary-active-background-color: var(--rotomeca-primary-tone-2);
+  --rotomeca-button-primary-active-color: var(--rotomeca-dark);
+  --rotomeca-button-primary-active-border: solid thin var(--rotomeca-primary-tone-2);
+  --rotomeca-button-secondary-background-color: var(--rotomeca-secondary);
+  --rotomeca-button-secondary-color: var(--rotomeca-light);
+  --rotomeca-button-secondary-border: solid thin var(--rotomeca-secondary);
+  --rotomeca-button-secondary-hover-background-color: var(--rotomeca-secondary-tone-1);
+  --rotomeca-button-secondary-hover-color: var(--rotomeca-light);
+  --rotomeca-button-secondary-hover-border: solid thin var(--rotomeca-secondary-tone-1);
+  --rotomeca-button-secondary-active-background-color: var(--rotomeca-secondary-tone-2);
+  --rotomeca-button-secondary-active-color: var(--rotomeca-dark);
+  --rotomeca-button-secondary-active-border: solid thin var(--rotomeca-secondary-tone-2);
+  --rotomeca-button-error-background-color: var(--rotomeca-error);
+  --rotomeca-button-error-color: var(--rotomeca-light);
+  --rotomeca-button-error-border: solid thin var(--rotomeca-error);
+  --rotomeca-button-error-hover-background-color: var(--rotomeca-primary-tone-1);
+  --rotomeca-button-error-hover-color: var(--rotomeca-light);
+  --rotomeca-button-error-hover-border: solid thin var(--rotomeca-primary-tone-1);
+  --rotomeca-button-error-active-background-color: var(--rotomeca-primary-tone-2);
+  --rotomeca-button-error-active-color: var(--rotomeca-dark);
+  --rotomeca-button-error-active-border: solid thin var(--rotomeca-primary-tone-2);
+  /*Input*/
+  --rotomeca-input-primary-background-color: var(--rotomeca-light);
+  --rotomeca-input-primary-color: var(--rotomeca-dark);
+  --rotomeca-input-primary-border: solid thin var(--rotomeca-primary);
+  --rotomeca-input-primary-border-radius: var(--rotomeca-border-radius-3);
+  --rotomeca-input-secondary-background-color: var(--rotomeca-light);
+  --rotomeca-input-secondary-color: var(--rotomeca-dark);
+  --rotomeca-input-secondary-border: solid thin var(--rotomeca-secondary);
+  --rotomeca-input-secondary-border-radius: var(--rotomeca-border-radius-3);
+  --rotomeca-input-success-background-color: var(--rotomeca-light);
+  --rotomeca-input-success-color: var(--rotomeca-dark);
+  --rotomeca-input-success-border: solid thin var(--rotomeca-success);
+  --rotomeca-input-success-border-radius: var(--rotomeca-border-radius-3);
+  --rotomeca-input-error-background-color: var(--rotomeca-light);
+  --rotomeca-input-error-color: var(--rotomeca-dark);
+  --rotomeca-input-error-border: solid thin var(--rotomeca-error);
+  --rotomeca-input-error-border-radius: var(--rotomeca-border-radius-3);
+}
+/*# sourceMappingURL=./default.css.map */

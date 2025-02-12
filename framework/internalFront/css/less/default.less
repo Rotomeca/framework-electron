@@ -1,0 +1,52 @@
+//compress:false
+@import url('./buttons.less');
+@import url('./input.less');
+.button(@type) {
+  --rotomeca-button-@{type}-background-color: .mxbuttons[ @@type][background];
+  --rotomeca-button-@{type}-color: .mxbuttons[ @@type][color];
+  --rotomeca-button-@{type}-border: .mxbuttons[ @@type][border];
+}
+
+.input(@type) {
+  --rotomeca-input-@{type}-background-color: .mxinputs[
+    @@type][background-color];
+  --rotomeca-input-@{type}-color: .mxinputs[ @@type][color];
+  --rotomeca-input-@{type}-border: .mxinputs[ @@type][border];
+  --rotomeca-input-@{type}-border-radius: .mxinputs[ @@type][border-radius];
+}
+
+:root {
+  /*--namespace-type*/
+  /*Basic-types*/
+  --rotomeca-primary: #d46f4d;
+  --rotomeca-secondary: #08c5d1;
+  --rotomeca-primary-tone-1: #430c05;
+  --rotomeca-primary-tone-2: #ffbf66;
+  --rotomeca-secondary-tone-1: #00353f;
+  --rotomeca-secondary-tone-2: #bed3c3;
+  --rotomeca-success: rgb(59, 221, 59);
+  --rotomeca-error: red;
+  --rotomeca-warning: orange;
+  --rotomeca-info: rgb(155, 200, 226);
+  --rotomeca-light: white;
+  --rotomeca-dark: black;
+  --rotomeca-border-radius-1: 10px;
+  --rotomeca-border-radius-2: 5px;
+  --rotomeca-border-radius-3: 100px;
+  /*Buttons*/
+  .button(primary);
+  .button(primary-hover);
+  .button(primary-active);
+  .button(secondary);
+  .button(secondary-hover);
+  .button(secondary-active);
+  .button(error);
+  .button(error-hover);
+  .button(error-active);
+
+  /*Input*/
+  .input(primary);
+  .input(secondary);
+  .input(success);
+  .input(error);
+}

@@ -1,0 +1,53 @@
+.states(@state) {
+  ref-button:state(lightdom):state(@{state}) {
+    background-color: e('var(--rotomeca-button-@{state}-background-color)');
+    color: e('var(--rotomeca-button-@{state}-color)');
+    border: e('var(--rotomeca-button-@{state}-border)');
+
+    &:hover {
+      background-color: e(
+        'var(--rotomeca-button-@{state}-hover-background-color)'
+      );
+      color: e('var(--rotomeca-button-@{state}-hover-color)');
+      border: e('var(--rotomeca-button-@{state}-hover-border)');
+    }
+
+    &:active {
+      background-color: e(
+        'var(--rotomeca-button-@{state}-active-background-color)'
+      );
+      color: e('var(--rotomeca-button-@{state}-active-color)');
+      border: e('var(--rotomeca-button-@{state}-active-border)');
+    }
+  }
+}
+
+:state(htmlcustombutton) {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: var(
+    --ce-html-button-border-radius,
+    var(--rotomeca-border-radius-2, 100px)
+  );
+  transition: var(--ce-html-button-transition, all 0.1s ease-in);
+  padding: var(--ce-html-button-padding, 5px 10px);
+  cursor: pointer;
+  display: var(--ce-html-button-display, inline-block);
+
+  &:focus {
+    box-shadow: var(--ce-html-button-box-shadox-focus, 0 0 0 0.2rem #484d7a69);
+  }
+}
+
+ref-button:state(lightdom) {
+  transition: all 0.1s ease-in;
+  border-radius: var(--rotomeca-border-radius-2);
+  padding: 'var(--ce-html-button-padding, 5px 10px)';
+  cursor: 'pointer';
+  display: 'var(--ce-html-button-display, inline-block)';
+}
+
+.states(primary);
+.states(secondary);
+.states(error);

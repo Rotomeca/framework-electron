@@ -1,0 +1,53 @@
+.states(@state) {
+  :host(:state(@{state})) {
+    input {
+      background-color: e('var(--rotomeca-input-@{state}-background-color)');
+      color: e('var(--rotomeca-input-@{state}-color)');
+      border: e('var(--rotomeca-input-@{state}-border)');
+      border-radius: e('var(--rotomeca-input-@{state}-border-radius)');
+    }
+  }
+}
+
+:host {
+  position: relative;
+
+  label {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transition: all 0.1s ease-in;
+  }
+
+  input {
+    padding: 5px;
+
+    &:focus {
+      + label {
+        &:extend(:host(:state(value)) label);
+        font-style: italic;
+      }
+    }
+
+    &:required {
+      + label {
+        &::after {
+          content: '*';
+          color: var(--input-required, red);
+        }
+      }
+    }
+  }
+}
+
+:host(:state(value)) {
+  label {
+    top: -25px;
+    left: 0;
+  }
+}
+
+.states(primary);
+.states(secondary);
+.states(success);
+.states(error);

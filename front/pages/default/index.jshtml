@@ -1,0 +1,58 @@
+exporter.setTitle('Default page');
+debugger;
+const mode = 0;
+const test = 'yolo';
+const html = JsHtml.start
+.p().observe({ key: 'p' })
+  .if(mode === 0)
+    .text('BONJOUR')
+  .elseif(mode === 1)
+    .text('BONSOIR')
+  .elseif(mode === 2)
+    .text('BONNE NUIT !')
+  .else() 
+    .text('Qué ?')
+  .endif()
+  .if(env?.date?.includes?.('00'))
+    .span()
+      .text('STARTINNNNNNNNG')
+    .end()
+  .endif()
+  .customElement({ 
+    tag:'test', 
+    onconnected:function () {
+      this._it = 0;
+      let div = document.createElement('div');
+      div.setAttribute('id', 'yolostrat');
+      this.root.appendChild(div);
+      div = null;
+      setInterval<5>(() => {
+        this.root.querySelector('#yolostrat').innerHTML = '<p>' + (++this._it) + '</p>';
+      }, 500);
+    },
+    hasShadowDom: true  
+  })
+  .end()
+  .customElement('test').end()
+  .each((jhsmlt, it) => {
+    while<3>(true) {
+      jhsmlt.customElement('test').end();
+    }
+
+    return jhsmlt;
+  }, 0)
+  .shadowframework().primary_button()
+    .text('yolo')
+  .end()
+  .framework().secondary_button()
+    .text('dosomething')
+  .end()
+  .shadowframework().danger_button()
+    .text('error')
+  .end()
+  .framework().input_text()
+    .text('Type something')
+  .end()
+.end();
+
+exporter.export(html);

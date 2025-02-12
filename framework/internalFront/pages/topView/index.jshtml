@@ -1,0 +1,95 @@
+import { Random } from '../../../front/libs/random.js';
+
+exporter.setTitle('Menu').addToHeader(
+//prettier-ignore
+  JsHtml.start
+    .style()
+      .style_css_selector('#layout')
+        .style_css_prop('display', 'flex')
+        .style_css_prop('justify-content', 'space-between')
+      .style_css_selector_end()
+      .style_css_selector('.wrapper')
+        .style_css_prop('height', '100%')
+      .style_css_selector_end()
+      .style_css_selector('html, body, #layout, button')
+        .style_css_prop('background-color', '#f0f0f0')
+      .style_css_selector_end()
+      .style_css_selector('button')
+        .css_prop_helper().transitionAll()
+        .style_css_prop('height', '100%')
+        .style_css_prop('border', 'none')
+        .style_css_prop('border-radius', 0)
+      .style_css_selector_end()
+      .style_css_selector('button:hover')
+        .style_css_prop('background-color', '#b3d8fc')
+      .style_css_selector_end()
+      .style_css_selector('button:active')
+        .style_css_prop('background-color', '#6fb7ff')
+      .style_css_selector_end()
+    .end(),
+);
+
+/**
+ * @type {{left:string[], right:string[]}}
+ */
+const toView = env.toView;
+
+/**
+ * 
+ * @param {import("../../../front/JsHtml")._JsHtml} jshtml 
+ * @param {*} raw 
+ * @returns 
+ */
+function callback(jshtml, raw) {
+  raw = JSON.parse(raw);
+
+  const isClose = raw.action === 'RotomecaBrowserClose';
+  const closeId = isClose ? Random.random_string(Random.range(2, 10)) : null;
+
+  if (isClose) {
+    const tmp = JsHtml.start.style({
+      [`#${closeId}:hover`]: {
+        'background-color': 'red'
+      } 
+    }).end();
+
+    exporter.addToHeader(tmp);
+  }
+  
+  return jshtml
+  .button( { title:raw.title, onclick:helper.invoke.bind(helper, raw.action, id), 'data-icon':raw.icon } )
+    .each((current) => {
+      if (isClose) current = current.attr('id', closeId);
+      if (raw.action === 'RotomecaBrowserMaximise') current = current.attr('data-maximised', env?.maximised ?? false).attr('onclick', (element) => {
+        /**
+         * @type {HTMLElement}
+         */
+        let node = element.srcElement;
+
+        if (node.nodeName !== 'BUTTON') node = node.parentElement;
+
+        const isMaximised = !(node.getAttribute('data-maximised') === 'true');
+        node.setAttribute('data-maximised', isMaximised);
+
+        if (isMaximised) node.children[0].innerHTML = 'select_window_2';
+        else node.children[0].innerHTML = node.getAttribute('data-icon');
+        
+      });
+
+      return current;
+    }, null)
+    .span({ class:'material-symbols-outlined' }).css('font-size', '21px')
+      .text(raw.icon)
+    .end()
+  .end();
+}
+
+const html = JsHtml.start
+  .div({ class: 'left wrapper' })
+    .each(callback, ...toView.left.reverse())
+  .end()
+  .div({ class: 'right wrapper' })
+    .each(callback, ...toView.right.reverse())
+  .end();
+
+exporter.export(html);

@@ -1,0 +1,58 @@
+import { HTMLCustomButton } from '../abstract/HTMLCustomButton.js';
+import sheet from '../../internalFront/css/webcomponents/buttons.css' assert { type: 'css' };
+export { HTMLRotomecaButton };
+
+class HTMLRotomecaButton extends HTMLCustomButton {
+  constructor() {
+    super();
+  }
+
+  _p_main() {
+    super._p_main();
+
+    if (this.shadowEnabled()) {
+      let style = document.createElement('style');
+      style.appendChild(this.createText(sheet));
+      this.root.append(style);
+      style = null;
+    }
+  }
+
+  /**
+   *
+   * @param {Object} [options={}]
+   * @param {('primary' | 'secondary' | 'error')} [options.form='primary']
+   * @returns {HTMLRotomecaButton}
+   */
+  static CreateNode({
+    shadowEnabled = true,
+    form = 'primary',
+    content = null,
+  } = {}) {
+    /**
+     * @type {HTMLRotomecaButton}
+     */
+    let node = document.createElement(this.TAG);
+
+    node.attr('data-shadow', { value: shadowEnabled });
+    node.attr('data-state', { value: form });
+
+    if (content) {
+      if (typeof content === 'string') node.root.innerHTML = content;
+      else node.root.appendChild(content);
+    }
+
+    return node;
+  }
+
+  /**
+   * @type {string}
+   * @readonly
+   * @static
+   */
+  static get TAG() {
+    return 'ref-button';
+  }
+}
+
+HTMLRotomecaButton.TryDefine(HTMLRotomecaButton.TAG, HTMLRotomecaButton);

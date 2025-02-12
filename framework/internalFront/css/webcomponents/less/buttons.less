@@ -1,0 +1,33 @@
+.states(@state) {
+  :host(:state(@{state})) {
+    background-color: e('var(--rotomeca-button-@{state}-background-color)');
+    color: e('var(--rotomeca-button-@{state}-color)');
+    border: e('var(--rotomeca-button-@{state}-border)');
+  }
+  :host(:hover:state(@{state})) {
+    background-color: e(
+      'var(--rotomeca-button-@{state}-hover-background-color)'
+    );
+    color: e('var(--rotomeca-button-@{state}-hover-color)');
+    border: e('var(--rotomeca-button-@{state}-hover-border)');
+  }
+  :host(:active:state(@{state})) {
+    background-color: e(
+      'var(--rotomeca-button-@{state}-active-background-color)'
+    );
+    color: e('var(--rotomeca-button-@{state}-active-color)');
+    border: e('var(--rotomeca-button-@{state}-active-border)');
+  }
+}
+
+:host {
+  transition: all 0.1s ease-in;
+  border-radius: var(--rotomeca-border-radius-2);
+  padding: 'var(--ce-html-button-padding, 5px 10px)';
+  cursor: 'pointer';
+  display: 'var(--ce-html-button-display, inline-block)';
+}
+
+.states(primary);
+.states(secondary);
+.states(error);
