@@ -104,7 +104,7 @@ async function init(workingDir) {
   fs.mkdirSync(path.join(workingDir, 'front/classes/webcomponents'));
 
   const index = `
-const { AAppObject } = require('rotomeca-electron-framework');
+const { AAppObject } = require('@rotomeca/framework-electron').rotomeca.AAppObject;
 
 class Index extends AAppObject {
   main() {
