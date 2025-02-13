@@ -1,5 +1,5 @@
 exporter.setTitle('Default page');
-debugger;
+
 const mode = 0;
 const test = 'yolo';
 const html = JsHtml.start

@@ -1,3 +1,5 @@
+const { exec } = require('child_process');
+
 async function init(workingDir) {
   const fs = require('fs');
   const path = require('path');
@@ -12,6 +14,7 @@ async function init(workingDir) {
   console.log('[init]Updating json package', packagePath);
   let jsonPackage = JSON.parse(fs.readFileSync(packagePath).toString());
   jsonPackage.scripts ??= {};
+  jsonPackage.scripts.start = 'electron .';
   jsonPackage.scripts.debug = 'npm run rotomeca test';
   jsonPackage.scripts.make = 'npm run rotomeca build';
   jsonPackage.scripts.create_page = 'npm run rotomeca page';
@@ -104,7 +107,7 @@ async function init(workingDir) {
   fs.mkdirSync(path.join(workingDir, 'front/classes/webcomponents'));
 
   const index = `
-const { AAppObject } = require('@rotomeca/framework-electron').rotomeca.AAppObject;
+const { AAppObject } = require('@rotomeca/framework-electron').rotomeca.abstract.AAppObject;
 
 class Index extends AAppObject {
   main() {
@@ -127,6 +130,12 @@ Index.Run();
   );
   console.log('[init]Creating default page.....');
   await require('./page').page(workingDir, 'default');
+
+  console.log('[init]Install electron localy');
+  exec('npm install --save-dev electron');
+
+  console.log('[init]Install framework');
+  exec('npm install --save-dev @rotomeca/framework-electron@latest');
   console.log('[init]end');
 }
 
