@@ -122,5 +122,7 @@ class FrameworkExporter {
   }
 }
 
-module.rotomeca = FrameworkExporter;
-module.EMPTY_STRING = FrameworkExporter.EMPTY_STRING;
+module.exports = {
+  rotomeca: FrameWorkAbstractExporter,
+  EMPTY_STRING: FrameworkExporter.EMPTY_STRING,
+};
