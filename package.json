@@ -1,6 +1,6 @@
 {
   "name": "@rotomeca/framework-electron",
-  "version": "0.0.12",
+  "version": "0.0.16",
   "description": "Framework electron",
   "main": "index.js",
   "bin": {
@@ -14,7 +14,8 @@
     "url": "git+https://github.com/Rotomeca/framework-electron.git"
   },
   "keywords": [
-    "electron"
+    "electron",
+    "framework"
   ],
   "author": "framework",
   "license": "ISC",

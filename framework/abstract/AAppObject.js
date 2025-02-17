@@ -143,7 +143,7 @@ class AAppObject extends AFrameworkObject {
       icon = EMPTY_STRING,
       show = true,
       disableMenu = false,
-    },
+    } = {},
   ) {
     if (icon === EMPTY_STRING || !icon) icon = undefined;
 
@@ -224,7 +224,7 @@ class AAppObject extends AFrameworkObject {
       transparent = false,
       skipTaskbar = false,
       icon = EMPTY_STRING,
-    },
+    } = {},
   ) {
     if (icon === EMPTY_STRING || !icon) icon = undefined;
 
@@ -274,7 +274,9 @@ class AAppObject extends AFrameworkObject {
 
   static Run() {
     let mainApp = new this.prototype.constructor();
-    app.on('ready', mainApp.main.bind(mainApp));
+    app.on('ready', () => {
+      mainApp.main();
+    });
 
     app.on(
       'window-all-closed',

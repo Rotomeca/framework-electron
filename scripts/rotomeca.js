@@ -4,7 +4,7 @@ const currentDirectory = process.cwd();
 
 switch (script) {
   case 'test':
-    require('./builder').Start(currentDirectory, 'npm start');
+    require('./builder').Start(currentDirectory, 'npm run _start');
     break;
 
   case 'build':

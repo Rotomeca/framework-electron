@@ -1,4 +1,5 @@
 const { exec } = require('child_process');
+const { RotomecaPromise } = require('../framework/classes/RotomecaPromise');
 
 async function init(workingDir) {
   const fs = require('fs');
@@ -14,10 +15,13 @@ async function init(workingDir) {
   console.log('[init]Updating json package', packagePath);
   let jsonPackage = JSON.parse(fs.readFileSync(packagePath).toString());
   jsonPackage.scripts ??= {};
-  jsonPackage.scripts.start = 'electron .';
-  jsonPackage.scripts.debug = 'npm run rotomeca test';
-  jsonPackage.scripts.make = 'npm run rotomeca build';
-  jsonPackage.scripts.create_page = 'npm run rotomeca page';
+  jsonPackage.scripts._start = 'electron .';
+  jsonPackage.scripts._make = 'electron-forge make';
+  jsonPackage.scripts.rotomeca = 'rotomeca';
+  jsonPackage.scripts.start = 'npm run debug';
+  jsonPackage.scripts.debug = 'rotomeca test';
+  jsonPackage.scripts.make = 'rotomeca build';
+  jsonPackage.scripts.page = 'rotomeca page';
 
   jsonPackage = JSON.stringify(jsonPackage);
 
@@ -107,12 +111,13 @@ async function init(workingDir) {
   fs.mkdirSync(path.join(workingDir, 'front/classes/webcomponents'));
 
   const index = `
-const { AAppObject } = require('@rotomeca/framework-electron').rotomeca.abstract.AAppObject;
+const AAppObject = require('@rotomeca/framework-electron').rotomeca.Abstract.AAppObject;
 
 class Index extends AAppObject {
   main() {
     this.onwindowallclosed.push(this.quit.bind(this));
 
+    this.createBrowserWindow('default');
     //Do things here
   }
 }
@@ -132,10 +137,22 @@ Index.Run();
   await require('./page').page(workingDir, 'default');
 
   console.log('[init]Install electron localy');
-  exec('npm install --save-dev electron');
+  await new RotomecaPromise((manager) => {
+    manager.resolver.start();
+
+    exec('npm install --save-dev electron', () => {
+      manager.resolver.resolve(true);
+    });
+  });
 
   console.log('[init]Install framework');
-  exec('npm install --save-dev @rotomeca/framework-electron@latest');
+  await new RotomecaPromise((manager) => {
+    manager.resolver.start();
+
+    exec('npm install --save-dev @rotomeca/framework-electron@latest', () => {
+      manager.resolver.resolve(true);
+    });
+  });
   console.log('[init]end');
 }
 
