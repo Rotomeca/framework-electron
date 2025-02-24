@@ -36,7 +36,7 @@ declare type PromiseCallbackAsync<TResult> = (
   manager: PromiseManagerAsync,
   ...args: any[]
 ) => Promise<TResult>;
-declare class RotomecaPromise<TResult> {
+export declare class RotomecaPromise<TResult> {
   constructor(
     callback: PromiseCallback<TResult> | PromiseCallbackAsync<TResult>,
     ...args: any[]
@@ -59,4 +59,38 @@ declare class RotomecaPromise<TResult> {
   catch<TErrorResult>(
     onfullfiled: (onrejected: TResult) => TErrorResult,
   ): RotomecaPromise<TErrorResult>;
+  success<TValidResult>(
+    onSuccess: (data: TResult) => TValidResult,
+  ): RotomecaPromise<TValidResult>;
+  fail<TErrorResult>(
+    onFailed: (data: TResult) => TErrorResult,
+  ): RotomecaPromise<TErrorResult>;
+  always<TValidResult>(
+    onAlways: (data: TResult) => TValidResult,
+  ): RotomecaPromise<TValidResult>;
+
+  static Sleep(ms: number): RotomecaPromise<void>;
+  static Resolved(): RotomecaResolvedPromise;
+  static All(
+    ...promises: (RotomecaPromise<any> | Promise<any>)[]
+  ): RotomecaPromise<any[]>;
+  static AllSettled(
+    ...promises: (RotomecaPromise<any> | Promise<any>)[]
+  ): RotomecaPromise<PromiseSettledResult<any>[]>;
+  static Start<TResult>(
+    callback: PromiseCallback<TResult> | PromiseCallbackAsync<TResult>,
+    ...args: any[]
+  ): RotomecaPromise<TResult>;
+  static readonly TResult: typeof EPromiseState;
+}
+
+declare class RotomecaStartedPromise<TResult> extends RotomecaPromise<TResult> {
+  constructor(
+    callback: PromiseCallback<TResult> | PromiseCallbackAsync<TResult>,
+    ...args: any[]
+  );
+}
+
+declare class RotomecaResolvedPromise extends RotomecaStartedPromise<void> {
+  constructor();
 }

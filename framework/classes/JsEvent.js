@@ -225,4 +225,4 @@ class JsEvent {
   }
 }
 
-module.exports = { JsEvent };
+module.exports = JsEvent;

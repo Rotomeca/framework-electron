@@ -1,7 +1,7 @@
 const { app, ipcMain, BaseWindow } = require('electron');
-const { JsEvent } = require('../classes/JsEvent');
 const { AFrameworkObject } = require('./AFrameworkObject');
 const { EMPTY_STRING } = require('../constants');
+const JsEvent = require('../classes/JsEvent');
 
 /**
  * @todo FrameBrowserWindow
@@ -15,7 +15,6 @@ class AAppObject extends AFrameworkObject {
   constructor() {
     super();
     this.onwindowallclosed = new JsEvent();
-
     ipcMain.handle('RotomecaBrowserClose', (_, id) => {
       if (id.includes('topview_')) id = id.replace('topview_', EMPTY_STRING);
 

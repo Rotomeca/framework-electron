@@ -349,7 +349,7 @@ class RotomecaPromise {
    * @readonly
    * @static
    */
-  static get PromiseStates() {
+  static get TResult() {
     return EPromiseState;
   }
 
