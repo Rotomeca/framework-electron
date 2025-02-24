@@ -1,4 +1,3 @@
-const { REnv } = require('../classes/RotomecaEnv');
 const { RotomecaPromise } = require('../classes/RotomecaPromise');
 const { EMPTY_STRING } = require('../constants');
 
