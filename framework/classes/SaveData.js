@@ -5,7 +5,8 @@
  */
 
 const { EMPTY_STRING } = require('../constants');
-const { JsEvent } = require('./JsEvent');
+const JsEvent = require('./JsEvent');
+const { RotomecaPromise } = require('./RotomecaPromise');
 
 /**
  * @callback OnItemLoadedCallback
@@ -85,12 +86,13 @@ class FileData {
 
   /**
    * Charge les données
-   * @returns {Promise<T | false>} false si le fichier n'éxiste pas
+   * @returns {RotomecaPromise<T | false>} false si le fichier n'éxiste pas
    * @async
    */
   async loadAsync() {
     let loaded = false;
-    await new Promise((ok) => {
+    await new RotomecaPromise((manager) => {
+      manager.resolver.start();
       FileData.fs.readFile(this.path, 'utf-8', (err, data) => {
         if (!err) {
           try {
@@ -100,7 +102,7 @@ class FileData {
           }
         }
 
-        ok();
+        manager.resolver.resolve();
       });
     });
 

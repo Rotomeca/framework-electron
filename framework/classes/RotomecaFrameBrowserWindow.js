@@ -5,7 +5,7 @@ const {
   ipcMain,
   dialog,
 } = require('electron');
-const { JsEvent } = require('./JsEvent');
+const JsEvent = require('./JsEvent');
 const { ISerialize } = require('../interfaces/ISerialize');
 const { EMPTY_STRING } = require('../constants');
 const { RotomecaPromise } = require('./RotomecaPromise');

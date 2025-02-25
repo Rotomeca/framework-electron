@@ -33,7 +33,7 @@ declare type PromiseCallback<TResult> = (
   ...args: any[]
 ) => TResult;
 declare type PromiseCallbackAsync<TResult> = (
-  manager: PromiseManagerAsync,
+  manager: PromiseManager<TResult>,
   ...args: any[]
 ) => Promise<TResult>;
 export declare class RotomecaPromise<TResult> {
@@ -69,6 +69,7 @@ export declare class RotomecaPromise<TResult> {
     onAlways: (data: TResult) => TValidResult,
   ): RotomecaPromise<TValidResult>;
 
+  static #_JsEvent<TCallback>(): typeof JsEvent<TCallback>;
   static Sleep(ms: number): RotomecaPromise<void>;
   static Resolved(): RotomecaResolvedPromise;
   static All(

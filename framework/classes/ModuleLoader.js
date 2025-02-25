@@ -81,11 +81,11 @@ class _RotomecaModuleLoader {
   }
 
   /**
-   * @type {typeof import('./Geometry').Geometry}
+   * @type {typeof import('./Geometry')}
    * @readonly
    */
   get geometry() {
-    return require('./Geometry').Geometry;
+    return require('./Geometry');
   }
 
   /**

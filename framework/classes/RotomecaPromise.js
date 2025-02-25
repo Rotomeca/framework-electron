@@ -50,12 +50,8 @@ class RotomecaPromise {
     this.#_callback = callback;
     this.#_state = EPromiseState.pending;
     this.#_cancel_completed = false;
-    //this.#_resoving; = new ResolvingState();
     this.#_args = args;
 
-    /**
-     * @type {import('./JsEvent.js').JsEvent<() => void>}
-     */
     this.onAbort = new RotomecaPromise.#_JsEvent();
   }
 
@@ -338,10 +334,10 @@ class RotomecaPromise {
   }
 
   /**
-   * @type {typeof import('./JsEvent.js').JsEvent}
+   * @type {typeof import('./JsEvent')}
    */
   static get #_JsEvent() {
-    return require('./JsEvent').JsEvent;
+    return require('./JsEvent');
   }
 
   /**
