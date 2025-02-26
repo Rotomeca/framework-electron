@@ -535,4 +535,4 @@ class EmptyFrameworkObject extends AFrameworkObject {
   }
 }
 
-module.exports = { AFrameworkObject };
+module.exports = AFrameworkObject;

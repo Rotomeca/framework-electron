@@ -1,7 +1,7 @@
 const { app, ipcMain, BaseWindow } = require('electron');
-const { AFrameworkObject } = require('./AFrameworkObject');
 const { EMPTY_STRING } = require('../constants');
 const JsEvent = require('../classes/JsEvent');
+const AFrameworkObject = require('./AFrameworkObject');
 
 /**
  * @todo FrameBrowserWindow
