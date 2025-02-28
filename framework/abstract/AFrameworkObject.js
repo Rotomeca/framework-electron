@@ -1,4 +1,4 @@
-const { RotomecaPromise } = require('../classes/RotomecaPromise');
+const RotomecaPromise = require('@rotomeca/promise');
 const { EMPTY_STRING } = require('../constants');
 
 /**

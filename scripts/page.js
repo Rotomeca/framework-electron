@@ -1,4 +1,4 @@
-const { RotomecaPromise } = require('../framework/classes/RotomecaPromise');
+const RotomecaPromise = require('@rotomeca/promise');
 
 async function page(workingDir, askedPage = null) {
   const node_module_path = `${workingDir}/node_modules/@rotomeca/framework-electron`;

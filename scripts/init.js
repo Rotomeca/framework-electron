@@ -1,5 +1,5 @@
 const { exec } = require('child_process');
-const { RotomecaPromise } = require('../framework/classes/RotomecaPromise');
+const RotomecaPromise = require('@rotomeca/promise');
 
 async function init(workingDir) {
   const fs = require('fs');

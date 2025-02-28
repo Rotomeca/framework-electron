@@ -1,4 +1,4 @@
-import { RotomecaPromise } from './RotomecaPromise';
+import RotomecaPromise from '@rotomeca/promise';
 
 export declare class RJSParser {
   constructor(file: string);

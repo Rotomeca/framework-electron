@@ -21,7 +21,7 @@ class RJSParser {
 
   /**
    * @async
-   * @returns {import("./RotomecaPromise").RotomecaPromise<string>}
+   * @returns {import('@rotomeca/promise')<string>}
    */
   getAsync() {
     return new RotomecaModuleLoader.Instance.promise.Start(() => this.get());
@@ -88,7 +88,7 @@ class RJSParser {
   /**
    * @async
    * @param {string} file
-   * @returns {import("./RotomecaPromise").RotomecaPromise<string>}
+   * @returns {import('@rotomeca/promise')<string>}
    */
   static ParseAsync(file) {
     return new RJSParser(file).getAsync();

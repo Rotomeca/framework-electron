@@ -1,6 +1,6 @@
+import RotomecaPromise from '@rotomeca/promise';
 import { InternalModuleLoader } from '../classes/ModuleLoader';
 import { RotomecaPath } from '../classes/RotomecaPath';
-import { RotomecaPromise } from '../classes/RotomecaPromise';
 import { FileData, LoadedData } from '../classes/SaveData';
 
 export = AFrameworkObject;

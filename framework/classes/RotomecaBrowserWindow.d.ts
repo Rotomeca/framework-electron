@@ -1,6 +1,6 @@
 import { BrowserWindow } from 'electron';
-import { RotomecaPromise } from './RotomecaPromise';
 import { RotomecaPath } from './RotomecaPath';
+import RotomecaPromise from '@rotomeca/promise';
 
 declare type RotomecaBrowserWindowConstructorOptions = {
   page: string;

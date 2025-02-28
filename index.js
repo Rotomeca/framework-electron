@@ -86,7 +86,7 @@ class RotomecaFrameworkElectron {
   }
 
   /**
-   * @type {typeof import('./framework/classes/RotomecaPromise').RotomecaPromise}
+   * @type {typeof import('@rotomeca/promise')}
    * @readonly
    * @static
    */

@@ -1,4 +1,4 @@
-const { RotomecaPromise } = require('../framework/classes/RotomecaPromise');
+const RotomecaPromise = require('@rotomeca/promise');
 
 /**
  * @async
