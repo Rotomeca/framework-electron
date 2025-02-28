@@ -1,8 +1,7 @@
 const { BrowserWindow, app, dialog } = require('electron');
 const JsEvent = require('./JsEvent');
-const { AFrameworkObject } = require('../abstract/AFrameworkObject.js');
+const AFrameworkObject = require('../abstract/AFrameworkObject.js');
 const { RotomecaPromise } = require('./RotomecaPromise.js');
-const { EMPTY_STRING } = require('../constants.js');
 const { RotomecaModuleLoader } = require('./ModuleLoader.js');
 
 class RotomecaBrowserWindow extends BrowserWindow {

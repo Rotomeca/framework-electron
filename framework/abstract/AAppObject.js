@@ -286,4 +286,4 @@ class AAppObject extends AFrameworkObject {
   }
 }
 
-module.exports = { AAppObject };
+module.exports = AAppObject;

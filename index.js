@@ -6,25 +6,25 @@
  */
 class FrameWorkAbstractExporter {
   /**
-   * @type {typeof import('./framework/abstract/AAppObject').AAppObject}
+   * @type {typeof import('./framework/abstract/AAppObject')}
    * @readonly
    * @static
    */
   static get AAppObject() {
-    return require('./framework/abstract/AAppObject').AAppObject;
+    return require('./framework/abstract/AAppObject');
   }
 
   /**
-   * @type {typeof import('./framework/abstract/AFrameworkObject').AFrameworkObject}
+   * @type {typeof import('./framework/abstract/AFrameworkObject')}
    * @readonly
    * @static
    */
   static get AFrameworkObject() {
-    return require('./framework/abstract/AFrameworkObject').AFrameworkObject;
+    return require('./framework/abstract/AFrameworkObject');
   }
 
   /**
-   * @type {typeof import('./framework/interfaces/ISerialize').AFrameworkObject}
+   * @type {import('./framework/interfaces/ISerialize').ISerialize}
    * @readonly
    * @static
    */
@@ -39,7 +39,7 @@ class FrameWorkAbstractExporter {
  * @abstract
  * @hideconstructor
  */
-class FrameworkExporter {
+class RotomecaFrameworkElectron {
   /**
    * @type {typeof FrameWorkAbstractExporter}
    * @readonly
@@ -122,7 +122,4 @@ class FrameworkExporter {
   }
 }
 
-module.exports = {
-  rotomeca: FrameworkExporter,
-  EMPTY_STRING: FrameworkExporter.EMPTY_STRING,
-};
+module.exports = RotomecaFrameworkElectron;
