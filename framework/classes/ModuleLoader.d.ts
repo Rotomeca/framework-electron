@@ -1,3 +1,4 @@
+import RotomecaPromise from '@rotomeca/promise';
 import { RJSParser } from './RJSParser';
 import { RotomecaBrowserWindow } from './RotomecaBrowserWindow';
 import { RotomecaEnv } from './RotomecaEnv';
@@ -6,7 +7,6 @@ import {
   RotomecaFrameBrowserWindow,
 } from './RotomecaFrameBrowserWindow';
 import { RotomecaPath } from './RotomecaPath';
-import { RotomecaPromise } from './RotomecaPromise';
 import { FileData } from './SaveData';
 import { WrapperObject } from './WrapperObject';
 

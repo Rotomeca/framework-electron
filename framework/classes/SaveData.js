@@ -4,9 +4,9 @@
  * @returns {void}
  */
 
+const JsEvent = require('@rotomeca/event');
 const { EMPTY_STRING } = require('../constants');
-const JsEvent = require('./JsEvent');
-const { RotomecaPromise } = require('./RotomecaPromise');
+const RotomecaPromise = require('@rotomeca/promise');
 
 /**
  * @callback OnItemLoadedCallback

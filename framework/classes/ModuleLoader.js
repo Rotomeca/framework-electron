@@ -49,11 +49,10 @@ class _RotomecaModuleLoader {
   }
 
   /**
-   * @type {typeof import('./RotomecaPromise').RotomecaPromise}
    * @readonly
    */
   get promise() {
-    return require('./RotomecaPromise').RotomecaPromise;
+    return require('@rotomeca/promise');
   }
 
   /**

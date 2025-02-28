@@ -1,6 +1,6 @@
-import JsEvent from './JsEvent';
+import JsEvent from '@rotomeca/event';
 import { InternalModuleLoader } from './ModuleLoader';
-import { RotomecaPromise } from './RotomecaPromise';
+import RotomecaPromise from '@rotomeca/promise';
 
 declare type OnItemSavedCallback<T> = (data: T) => void;
 declare type OnItemLoadedCallback<T> = (data: T | false) => void;
