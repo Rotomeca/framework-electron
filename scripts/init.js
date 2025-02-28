@@ -140,7 +140,7 @@ Index.Run();
   await new RotomecaPromise((manager) => {
     manager.resolver.start();
 
-    exec('npm install --save-dev electron', () => {
+    exec('npm install electron', () => {
       manager.resolver.resolve(true);
     });
   });
@@ -149,7 +149,7 @@ Index.Run();
   await new RotomecaPromise((manager) => {
     manager.resolver.start();
 
-    exec('npm install --save-dev @rotomeca/framework-electron@latest', () => {
+    exec('npm install @rotomeca/framework-electron@latest', () => {
       manager.resolver.resolve(true);
     });
   });
