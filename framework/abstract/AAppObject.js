@@ -1,7 +1,7 @@
 const { app, ipcMain, BaseWindow } = require('electron');
-const { JsEvent } = require('../classes/JsEvent');
-const { AFrameworkObject } = require('./AFrameworkObject');
 const { EMPTY_STRING } = require('../constants');
+const AFrameworkObject = require('./AFrameworkObject');
+const JsEvent = require('@rotomeca/event');
 
 /**
  * @todo FrameBrowserWindow
@@ -15,7 +15,6 @@ class AAppObject extends AFrameworkObject {
   constructor() {
     super();
     this.onwindowallclosed = new JsEvent();
-
     ipcMain.handle('RotomecaBrowserClose', (_, id) => {
       if (id.includes('topview_')) id = id.replace('topview_', EMPTY_STRING);
 
@@ -143,7 +142,7 @@ class AAppObject extends AFrameworkObject {
       icon = EMPTY_STRING,
       show = true,
       disableMenu = false,
-    },
+    } = {},
   ) {
     if (icon === EMPTY_STRING || !icon) icon = undefined;
 
@@ -224,7 +223,7 @@ class AAppObject extends AFrameworkObject {
       transparent = false,
       skipTaskbar = false,
       icon = EMPTY_STRING,
-    },
+    } = {},
   ) {
     if (icon === EMPTY_STRING || !icon) icon = undefined;
 
@@ -274,7 +273,9 @@ class AAppObject extends AFrameworkObject {
 
   static Run() {
     let mainApp = new this.prototype.constructor();
-    app.on('ready', mainApp.main.bind(mainApp));
+    app.on('ready', () => {
+      mainApp.main();
+    });
 
     app.on(
       'window-all-closed',
@@ -285,4 +286,4 @@ class AAppObject extends AFrameworkObject {
   }
 }
 
-module.exports = { AAppObject };
+module.exports = AAppObject;

@@ -1,5 +1,4 @@
-const { REnv } = require('../classes/RotomecaEnv');
-const { RotomecaPromise } = require('../classes/RotomecaPromise');
+const RotomecaPromise = require('@rotomeca/promise');
 const { EMPTY_STRING } = require('../constants');
 
 /**
@@ -536,4 +535,4 @@ class EmptyFrameworkObject extends AFrameworkObject {
   }
 }
 
-module.exports = { AFrameworkObject };
+module.exports = AFrameworkObject;

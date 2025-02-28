@@ -1,15 +1,7 @@
-const {
-  BaseWindow,
-  WebContentsView,
-  app,
-  ipcMain,
-  dialog,
-} = require('electron');
-const { JsEvent } = require('./JsEvent');
+const { BaseWindow, WebContentsView, app, dialog } = require('electron');
 const { ISerialize } = require('../interfaces/ISerialize');
-const { EMPTY_STRING } = require('../constants');
-const { RotomecaPromise } = require('./RotomecaPromise');
 const { RotomecaModuleLoader } = require('./ModuleLoader');
+const JsEvent = require('@rotomeca/event');
 
 const TOP_SIZE = 26;
 

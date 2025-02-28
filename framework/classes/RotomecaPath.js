@@ -5,6 +5,14 @@ class RotomecaPath {
     return this.Path.relative(this.AppBasePath, `${this.AppBasePath}\\${path}`);
   }
 
+  static Relative(path1, path2) {
+    let path = this.Path.relative(path1, path2);
+
+    if (path[0] === '.') path = `./${path}`;
+
+    return path.replaceAll('\\', '/');
+  }
+
   /**
    * @type {import('path').PlatformPath}
    * @readonly

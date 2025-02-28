@@ -13,13 +13,13 @@ class WrapperObject {
   /**
    * Arguments par défaut
    * @private
-   * @type {?{TypeOfItem: typeof T, args:any[]}}
+   * @type {?{TypeOfItem: new() => T, args:any[]}}
    */
   #_args = null;
 
   /**
    * Constructeur de la classe
-   * @param {typeof T} TypeOfItem Classe
+   * @param {new() => T} TypeOfItem Classe
    * @param  {...any} args Argument pour instancier la classe
    */
   constructor(TypeOfItem, ...args) {
@@ -47,7 +47,7 @@ class WrapperObject {
   /**
    * Contient une instance d'un objet, utile pour la création d'un singleton.
    * @static
-   * @param {typeof T} typeofitem
+   * @param {new() => T} typeofitem
    * @param  {...any} args
    * @returns {WrapperObject<T>}
    */

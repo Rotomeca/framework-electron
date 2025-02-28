@@ -105,4 +105,4 @@ class Geometry {
   }
 }
 
-module.exports = { Geometry };
+module.exports = Geometry;

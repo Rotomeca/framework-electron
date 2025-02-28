@@ -49,11 +49,10 @@ class _RotomecaModuleLoader {
   }
 
   /**
-   * @type {typeof import('./RotomecaPromise').RotomecaPromise}
    * @readonly
    */
   get promise() {
-    return require('./RotomecaPromise').RotomecaPromise;
+    return require('@rotomeca/promise');
   }
 
   /**
@@ -81,11 +80,11 @@ class _RotomecaModuleLoader {
   }
 
   /**
-   * @type {typeof import('./Geometry').Geometry}
+   * @type {typeof import('./Geometry')}
    * @readonly
    */
   get geometry() {
-    return require('./Geometry').Geometry;
+    return require('./Geometry');
   }
 
   /**

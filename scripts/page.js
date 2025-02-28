@@ -1,8 +1,12 @@
-const { RotomecaPromise } = require('../framework/classes/RotomecaPromise');
+const RotomecaPromise = require('@rotomeca/promise');
 
 async function page(workingDir, askedPage = null) {
+  const node_module_path = `${workingDir}/node_modules/@rotomeca/framework-electron`;
+  const this_path = `${node_module_path}/scripts`;
   const fs = require('fs');
-  const path = require('path');
+  const rotomecaPath =
+    require('../framework/classes/RotomecaPath').RotomecaPath;
+  const path = rotomecaPath.Path;
 
   const page =
     askedPage ??
@@ -19,17 +23,17 @@ async function page(workingDir, askedPage = null) {
       });
     }));
 
-  const constantsJsPath = path
-    .relative(
+  const constantsJsPath = rotomecaPath
+    .Relative(
       path.join(workingDir, `/front/pages/${page}`),
-      path.join(__dirname, '../framework/front/constants.js'),
+      path.join(this_path, '../framework/front/constants.js'),
     )
     .replaceAll('\\', '/');
 
-  const randomJsPath = path
-    .relative(
+  const randomJsPath = rotomecaPath
+    .Relative(
       path.join(workingDir, `/front/pages/${page}`),
-      path.join(__dirname, '../framework/front/libs/random.js'),
+      path.join(this_path, '../framework/front/libs/random.js'),
     )
     .replaceAll('\\', '/');
 
@@ -97,10 +101,10 @@ exporter.export(html); //Export
 
   `;
 
-  const fontobjectPath = path
-    .relative(
+  const fontobjectPath = rotomecaPath
+    .Relative(
       path.join(workingDir, `/front/pages/${page}`),
-      path.join(__dirname, '../framework/front/abstract/AFrontObject.js'),
+      path.join(this_path, '../framework/front/abstract/AFrontObject.js'),
     )
     .replaceAll('\\', '/');
 

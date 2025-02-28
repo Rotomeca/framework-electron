@@ -1,6 +1,6 @@
 {
   "name": "@rotomeca/framework-electron",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "description": "Framework electron",
   "main": "index.js",
   "bin": {
@@ -14,7 +14,8 @@
     "url": "git+https://github.com/Rotomeca/framework-electron.git"
   },
   "keywords": [
-    "electron"
+    "electron",
+    "framework"
   ],
   "author": "framework",
   "license": "ISC",
@@ -28,7 +29,6 @@
     "prettier-eslint": "^16.1.2"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1",
     "@electron-forge/cli": "^7.6.0",
     "@electron-forge/maker-deb": "^7.6.0",
     "@electron-forge/maker-rpm": "^7.6.0",
@@ -37,6 +37,9 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.6.0",
     "@electron-forge/plugin-fuses": "^7.6.0",
     "@electron/fuses": "^1.8.0",
-    "electron": "^34.0.0"
+    "@rotomeca/event": "^1.0.0",
+    "@rotomeca/promise": "^1.0.1",
+    "electron": "^34.0.0",
+    "electron-squirrel-startup": "^1.0.1"
   }
 }

@@ -117,7 +117,9 @@ class RotomecaLuncher {
     console.log('path', workingFolder);
     console.log('[Build]Starting', workingFolder);
     let appLuncher = new RotomecaLuncher(workingFolder);
-    let nodeLuncher = new RotomecaLuncher(path.join(__dirname, '..'));
+    let nodeLuncher = new RotomecaLuncher(
+      path.join(workingFolder, 'node_modules/@rotomeca/electron-framework'),
+    );
     console.log('[Build]Parsing app', workingFolder);
     await appLuncher.start();
     console.log('[Build]Parsing nodes', workingFolder);
