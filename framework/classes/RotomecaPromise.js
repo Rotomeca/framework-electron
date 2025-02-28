@@ -345,13 +345,9 @@ class RotomecaPromise {
    * @readonly
    * @static
    */
-  static get TResult() {
+  static get PromiseStates() {
     return EPromiseState;
   }
-
-  // static get Ajax() {
-  //   return RotomecaAjax;
-  // }
 }
 
 /**

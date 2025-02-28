@@ -82,7 +82,7 @@ export declare class RotomecaPromise<TResult> {
     callback: PromiseCallback<TResult> | PromiseCallbackAsync<TResult>,
     ...args: any[]
   ): RotomecaPromise<TResult>;
-  static readonly TResult: typeof EPromiseState;
+  static readonly PromiseStates: typeof EPromiseState;
 }
 
 declare class RotomecaStartedPromise<TResult> extends RotomecaPromise<TResult> {
