@@ -272,6 +272,12 @@ class RotomecaBrowserWindow extends BrowserWindow {
         if (RotomecaModuleLoader.Instance.env.Instance.IsDev) {
           file = RotomecaModuleLoader.Instance.RJSParser.Parse(file);
         }
+      } else if (
+        fs.existsSync(filePath.replace('.jshtml', '.rjshtml.js.out.js'))
+      ) {
+        file = fs
+          .readFileSync(filePath.replace('.jshtml', '.rjshtml.js.out.js'))
+          .toString();
       } else
         file = fs
           .readFileSync(filePath.replace('.jshtml', '.rjshtml.js'))
@@ -286,13 +292,18 @@ class RotomecaBrowserWindow extends BrowserWindow {
     file = `async function (exporter, JsHtml, id, env, helper) { ${file} }`;
 
     if (!this.#_nojs) {
-      const jsPath = RotomecaBrowserWindow.RotomecaPath.Path.relative(
+      const rawJsPath = RotomecaBrowserWindow.RotomecaPath.Path.relative(
         RotomecaBrowserWindow.RotomecaPath.Path.join(
           __dirname,
           '../internalFront',
         ),
         app.getAppPath() + `/front/pages/${page}/main.js`,
-      ); //'./main.js';
+      );
+
+      const jsPath = fs.existsSync(`${rawJsPath}.out.js`)
+        ? `${rawJsPath}.out.js`
+        : rawJsPath;
+
       this.executeJavaScript(
         `
         (async () => {
