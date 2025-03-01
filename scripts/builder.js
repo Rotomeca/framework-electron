@@ -25,6 +25,40 @@ class RotomecaLuncher {
     }
   }
 
+  async buildFront() {
+    console.log('[BUILD]Starting build front');
+    const esbuild = require('esbuild');
+    const path = require('path');
+    let files = this.findFile(path.join(this.#_baseFolder, 'front/pages'), {
+      ext: '.js',
+    });
+
+    let promises = [];
+
+    for (const file of files) {
+      console.log('[BUILD]Starting build ' + file);
+      let promise = esbuild
+        .build({
+          entryPoints: [file],
+          bundle: true,
+          outfile: `${file}.out.js`,
+        })
+        .then(
+          function (builded) {
+            console.log(
+              `[BUILD]Finishing build of ${builded} into ${builded}.out.js`,
+            );
+          }.bind(null, file),
+        );
+
+      promises.push(promise);
+      promise = null;
+    }
+
+    await Promise.allSettled(promises);
+    console.log('[BUILD]Finishing build front');
+  }
+
   parseJsHtmlFile(element) {
     const fs = require('fs');
 
@@ -124,6 +158,7 @@ class RotomecaLuncher {
     await appLuncher.start();
     console.log('[Build]Parsing nodes', workingFolder);
     await nodeLuncher.start();
+    await appLuncher.buildFront();
     const { exec } = require('child_process');
     console.log('[Build]Starting', command, 'at', workingFolder);
     exec(command, { cwd: workingFolder }, (error, stdout, stderr) => {
