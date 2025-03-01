@@ -176,6 +176,7 @@ class RotomecaLuncher {
   }
 
   static async Start(workingFolder, command) {
+    const minify = command === 'npm run _make';
     const path = require('path');
     console.log('path', workingFolder);
     console.log('[Build]Starting', workingFolder);
@@ -187,7 +188,7 @@ class RotomecaLuncher {
     await appLuncher.start();
     console.log('[Build]Parsing nodes', workingFolder);
     await nodeLuncher.start();
-    await appLuncher.buildFront();
+    await appLuncher.buildFront({ minify });
     const { exec } = require('child_process');
     console.log('[Build]Starting', command, 'at', workingFolder);
     exec(command, { cwd: workingFolder }, (error, stdout, stderr) => {
