@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Rotomeca/framework-electron#readme",
   "devDependencies": {
+    "esbuild": "0.25.0",
     "eslint": "^8.52.0",
     "prettier": "^3.1.0",
     "prettier-eslint": "^16.1.2"
