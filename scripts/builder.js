@@ -25,7 +25,7 @@ class RotomecaLuncher {
     }
   }
 
-  async buildFront() {
+  async buildFront({ minify = false } = {}) {
     console.log('[BUILD]Starting build front');
     const esbuild = require('esbuild');
     const path = require('path');
@@ -41,9 +41,12 @@ class RotomecaLuncher {
       console.log('[BUILD]Starting build ' + file);
       let promise = esbuild
         .build({
+          minify,
           entryPoints: [file],
           bundle: true,
           outfile: `${file}.out.js`,
+          sourcemap: true,
+          target: ['chrome58'],
         })
         .then(
           function (builded) {
@@ -66,6 +69,14 @@ class RotomecaLuncher {
     console.log('[BUILD]Starting unbuild front');
     for (const file of this.findFile(this.#_baseFolder, {
       ext: '.js',
+      nameIncludes: '.out.js',
+    })) {
+      fs.rmSync(file);
+      console.log('[UNBUILD]removing', file);
+    }
+
+    for (const file of this.findFile(this.#_baseFolder, {
+      ext: '.map',
       nameIncludes: '.out.js',
     })) {
       fs.rmSync(file);
