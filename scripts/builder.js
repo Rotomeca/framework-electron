@@ -36,6 +36,8 @@ class RotomecaLuncher {
     let promises = [];
 
     for (const file of files) {
+      if (file.includes('.out.js')) continue;
+
       console.log('[BUILD]Starting build ' + file);
       let promise = esbuild
         .build({
@@ -57,6 +59,20 @@ class RotomecaLuncher {
 
     await Promise.allSettled(promises);
     console.log('[BUILD]Finishing build front');
+  }
+
+  unbuildFront() {
+    const fs = require('fs');
+    console.log('[BUILD]Starting unbuild front');
+    for (const file of this.findFile(this.#_baseFolder, {
+      ext: '.js',
+      nameIncludes: '.out.js',
+    })) {
+      fs.rmSync(file);
+      console.log('[UNBUILD]removing', file);
+    }
+
+    console.log('[BUILD]Finishing unbuild front');
   }
 
   parseJsHtmlFile(element) {
@@ -117,6 +133,8 @@ class RotomecaLuncher {
       ext: '.js',
       nameIncludes: '.rjshtml.js',
     })) {
+      if (file.includes('.out.')) continue;
+
       fs.rmSync(file);
       console.log('removing', file);
     }
@@ -174,6 +192,7 @@ class RotomecaLuncher {
 
       appLuncher.end().then(() =>
         nodeLuncher.end().then(() => {
+          appLuncher.unbuildFront();
           console.log('[Build]End', workingFolder);
         }),
       );
