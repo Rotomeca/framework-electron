@@ -5,9 +5,8 @@
  */
 
 const JsEvent = require('@rotomeca/event');
-const { EMPTY_STRING } = require('../constants');
+const { EMPTY_STRING, FILE_SEPARATOR } = require('../constants');
 const RotomecaPromise = require('@rotomeca/promise');
-
 /**
  * @callback OnItemLoadedCallback
  * @param {any | false} data Données chargés. `false` si le fichier n'existe pas.
@@ -48,7 +47,7 @@ class FileData {
    * @readonly
    */
   get path() {
-    return `${FileData.BasePath}\\${this.#_name}`;
+    return `${FileData.BasePath}${FILE_SEPARATOR}${this.#_name}`;
   }
 
   /**
@@ -136,7 +135,7 @@ class FileData {
         else path = HOMEDIR;
       } else path = HOMEDIR;
 
-      this.#_basePath = `${path}\\.${this.#_ModuleLoader.Instance.electron.app.name}`;
+      this.#_basePath = `${path}${FILE_SEPARATOR}.${this.#_ModuleLoader.Instance.electron.app.name}`;
     }
 
     return this.#_basePath;

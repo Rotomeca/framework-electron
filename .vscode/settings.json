@@ -14,5 +14,6 @@
   },
   "files.associations": {
     "*.rjs": "javascript"
-  }
+  },
+  "conventionalCommits.scopes": ["back"]
 }
