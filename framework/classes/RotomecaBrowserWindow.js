@@ -191,6 +191,7 @@ class RotomecaBrowserWindow extends BrowserWindow {
   }
 
   changePage(page) {
+    this.#_page = page;
     if (page.includes('http')) this.loadURL(page);
     else {
       this.loadFile(
