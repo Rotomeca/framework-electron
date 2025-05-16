@@ -1,8 +1,13 @@
+const { FILE_SEPARATOR } = require('../constants');
+
 class RotomecaPath {
   constructor() {}
 
   static RelativeToAppPath(path) {
-    return this.Path.relative(this.AppBasePath, `${this.AppBasePath}\\${path}`);
+    return this.Path.relative(
+      this.AppBasePath,
+      `${this.AppBasePath}${FILE_SEPARATOR}${path}`,
+    );
   }
 
   static Relative(path1, path2) {
