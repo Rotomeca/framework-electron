@@ -15,5 +15,5 @@
   "files.associations": {
     "*.rjs": "javascript"
   },
-  "conventionalCommits.scopes": ["back", "app"]
+  "conventionalCommits.scopes": ["back", "app", "node"]
 }
