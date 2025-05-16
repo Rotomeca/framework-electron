@@ -27,4 +27,5 @@ declare abstract class RotomecaFrameworkElectron {
   static readonly Geometry: typeof Geometry;
   static readonly Save: typeof FileData;
   static readonly EMPTY_STRING: string;
+  static readonly FILE_SEPARATOR: string;
 }

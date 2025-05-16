@@ -120,6 +120,15 @@ class RotomecaFrameworkElectron {
   static get EMPTY_STRING() {
     return require('./framework/constants').EMPTY_STRING;
   }
+
+  /**
+   * @type {string}
+   * @readonly
+   * @static
+   */
+  static get FILE_SEPARATOR() {
+    return require('./framework/constants').FILE_SEPARATOR;
+  }
 }
 
 module.exports = RotomecaFrameworkElectron;
