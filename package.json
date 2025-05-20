@@ -1,6 +1,6 @@
 {
   "name": "@rotomeca/framework-electron",
-  "version": "1.0.3",
+  "version": "1.0.3A3",
   "description": "Framework electron",
   "main": "index.js",
   "bin": {
